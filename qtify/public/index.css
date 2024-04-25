@@ -2,10 +2,21 @@
   margin: 0;
   padding: 0;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --color-primary: #34c94b;
   --color-black: #121212;
   --color-white: #ffffff;
+}
+html,
+body {
+  height: 100%;
 }
 body {
   font-family: "Poppins", sans-serif;
