@@ -7,8 +7,8 @@
   padding: 0.5rem 0.5rem;
   border: none;
   width: 10rem;
-  font-family: ;
+  font-family: "Poppins", sans-serif;
 }
-.feedback :hover {
+.feedback:hover {
   cursor: pointer;
 }
