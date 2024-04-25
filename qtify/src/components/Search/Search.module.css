@@ -8,3 +8,8 @@
 .input::placeholder {
   color: var(--color-black);
 }
+@media (max-width: 786px) {
+  .search {
+    margin: 0 1rem;
+  }
+}

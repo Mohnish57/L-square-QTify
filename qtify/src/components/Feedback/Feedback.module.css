@@ -10,3 +10,9 @@
   font-family: "Poppins", sans-serif;
   cursor: pointer;
 }
+@media (max-width: 786px) {
+  .feedback {
+    width: 5rem;
+    font-size: 0.6rem;
+  }
+}
