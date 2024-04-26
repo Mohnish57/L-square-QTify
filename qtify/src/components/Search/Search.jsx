@@ -5,7 +5,8 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import styles from './Search.module.css'
 
-export default function Search() {
+export default function Search({placeholder, searchData}) {
+  
   return (
     <Paper 
       className={styles.search}
@@ -15,7 +16,7 @@ export default function Search() {
       <InputBase
         className={styles.input}
         sx={{ ml: 2, flex: 1 , borderRight:'1px solid black'}}
-        placeholder="Search a song of your choice"
+        placeholder={placeholder}
         inputProps={{ 'aria-label': 'search a maps' }}
       />
       <IconButton type="button" sx={{p: '10px' }} aria-label="search">

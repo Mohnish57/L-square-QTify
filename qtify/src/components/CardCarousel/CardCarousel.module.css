@@ -1,0 +1,13 @@
+.CardCarousel {
+  margin: 1rem;
+}
+.carousel {
+  text-align: left;
+}
+.cards {
+  display: flex;
+  margin: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}

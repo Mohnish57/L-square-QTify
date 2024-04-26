@@ -1,0 +1,10 @@
+.chip {
+  background-color: var(--color-black);
+}
+
+.cardContent {
+  display: flex;
+  padding: 0.2rem;
+  align-items: center;
+  justify-content: flex-start;
+}

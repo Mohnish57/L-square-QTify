@@ -16,9 +16,8 @@
 }
 
 .heroText {
-  font-size: x-large;
+  font-size: 1.2rem;
   text-wrap: nowrap;
-  font-weight: 700;
   text-align: center;
 }
 

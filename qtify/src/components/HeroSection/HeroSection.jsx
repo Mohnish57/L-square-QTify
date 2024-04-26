@@ -9,8 +9,8 @@ const HeroSection =()=> {
     <section className={styles.heroSection}>
         <div className={styles.container}>
             <div className={styles.heroText}>
-            100 Thousand Songs, ad-free 
-            <br/>and Over thousands podcast episodes
+            <h1>100 Thousand Songs, ad-free</h1> 
+            <h1>and Over thousands podcast episodes</h1>
             </div>
             <div className={styles.heroImage}>
             <img src={ heroImage } alt="hero-image" height="200" width="200" loading='eager' />
