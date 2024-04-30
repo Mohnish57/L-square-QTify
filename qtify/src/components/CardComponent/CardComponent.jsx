@@ -7,35 +7,60 @@ import { Box, CardActionArea, Tooltip } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import { Link } from "react-router-dom";
 import styles from "./CardComponent.module.css";
-
-const CardComponent = ({ image, slug, follows, title, songs }) => {
-  return (
-    // <Link to="/album/:">
-
-    <Tooltip title={songs} placement="top">
-      <Card sx={{ width: 160, height: 210 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            width="160"
-            height="170"
-            image={image}
-            alt={slug}
-          />
-          <CardContent className={styles.cardContent}>
-            <Chip
-              className={styles.chip}
-              label={follows}
-              variant="filled"
-              color="primary"
+import numberTransform from "../../helper/numberTransform";
+const CardComponent = ({ data, type }) =>
+  type === "album" ? (
+    <Tooltip title={data.songs.length} placement="top">
+      <Link to={`/album/${data.slug}`}>
+        <Card sx={{ width: 160, height: 210 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              width="160"
+              height="170"
+              image={data.image}
+              alt={data.slug}
             />
-          </CardContent>
-        </CardActionArea>
-      </Card>
-      {title}
+            <CardContent className={styles.cardContent}>
+              <Chip
+                className={styles.chip}
+                label={`${data.follows} Follows`}
+                variant="filled"
+                color="primary"
+              />
+            </CardContent>
+          </CardActionArea>
+        </Card>
+
+        <h4>{data.title}</h4>
+      </Link>
     </Tooltip>
-    // </Link>
+  ) : (
+    <>
+      <Link to={`/album/${data.slug}`}>
+        <Card sx={{ width: 160, height: 210 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              width="160"
+              height="170"
+              image={data.image}
+              alt={data.slug}
+            />
+            <CardContent className={styles.cardContent}>
+              <Chip
+                className={styles.chip}
+                label={`${numberTransform(data.likes)} Likes`}
+                variant="filled"
+                color="primary"
+              />
+            </CardContent>
+          </CardActionArea>
+        </Card>
+
+        <h4 className={styles.title}>{data.title}</h4>
+      </Link>
+    </>
   );
-};
 
 export default CardComponent;

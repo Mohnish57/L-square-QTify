@@ -8,3 +8,9 @@
   align-items: center;
   justify-content: flex-start;
 }
+.title {
+  margin-top: 0.5rem;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

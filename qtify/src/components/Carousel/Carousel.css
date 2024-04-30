@@ -1,0 +1,12 @@
+.swiper {
+  margin-top: 1rem;
+}
+.swiper-button-prev::after,
+.swiper-button-next:after {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  padding: 0.5rem;
+  border-radius: 30%;
+  font-weight: 700;
+  font-size: 2rem;
+}

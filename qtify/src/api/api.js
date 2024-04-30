@@ -46,7 +46,7 @@ export const fetchFaq = async () => {
     console.log(e);
   }
 };
-export const fetchGenres = async () => {
+export const fetchFilters = async () => {
   try {
     const response = await axios.get(`${BACKEND_ENDPOINT}/genres`);
     return response.data;

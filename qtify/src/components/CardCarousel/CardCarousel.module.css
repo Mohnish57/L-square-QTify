@@ -5,9 +5,19 @@
   text-align: left;
 }
 .cards {
-  display: flex;
-  margin: 1rem;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(6, 14%);
+  grid-row-gap: 2rem;
   align-items: center;
-  overflow: hidden;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+.toggle {
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
 }
