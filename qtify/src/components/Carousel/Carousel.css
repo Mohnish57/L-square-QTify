@@ -3,8 +3,8 @@
 }
 .swiper-button-prev::after,
 .swiper-button-next:after {
-  background-color: var(--color-white);
-  color: var(--color-primary);
+  color: var(--color-white);
+  background-color: var(--color-primary);
   padding: 0.5rem;
   border-radius: 30%;
   font-weight: 700;
