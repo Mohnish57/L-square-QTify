@@ -1,11 +1,12 @@
 import HeroSection from "../../components/HeroSection/HeroSection";
 import { useOutletContext } from "react-router-dom";
 import CardCarousel from "../../components/CardCarousel/CardCarousel";
-import { fetchFilters } from "../../api/api";
+
 import styles from "./HomePage.module.css";
 const HomePage = () => {
   const { data } = useOutletContext();
-  const { topAlbums = [], newAlbums = [], songs = [] } = data;
+  const { topAlbums = [], newAlbums = [], songs = [], filters = [] } = data;
+  console.log(filters);
   return (
     <>
       <HeroSection />
@@ -14,7 +15,7 @@ const HomePage = () => {
         <CardCarousel title="New Albums" data={newAlbums} type="album" />
         <CardCarousel
           title="Songs"
-          filters={fetchFilters}
+          filterSource={filters}
           data={songs}
           type="songs"
         />

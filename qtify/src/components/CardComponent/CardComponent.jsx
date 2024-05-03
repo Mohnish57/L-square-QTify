@@ -10,56 +10,59 @@ import styles from "./CardComponent.module.css";
 import numberTransform from "../../helper/numberTransform";
 const CardComponent = ({ data, type }) =>
   type === "album" ? (
-    <Tooltip title={data.songs.length} placement="top">
+    <Tooltip title={`${data.songs.length} songs`} placement="top" arrow>
       <Link to={`/album/${data.slug}`}>
-        <Card sx={{ width: 160, height: 210 }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              width="160"
-              height="170"
-              image={data.image}
-              alt={data.slug}
-            />
-            <CardContent className={styles.cardContent}>
-              <Chip
-                className={styles.chip}
-                label={`${data.follows} Follows`}
-                variant="filled"
-                color="primary"
+        <div className={styles.card}>
+          <Card sx={{ width: 160, height: 210 }}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                width="160"
+                height="170"
+                image={data.image}
+                alt={data.slug}
               />
-            </CardContent>
-          </CardActionArea>
-        </Card>
-
-        <h4>{data.title}</h4>
+              <CardContent className={styles.cardContent}>
+                <Chip
+                  className={styles.chip}
+                  label={`${numberTransform(data.follows)} Follows`}
+                  variant="filled"
+                  color="primary"
+                />
+              </CardContent>
+            </CardActionArea>
+          </Card>
+          <h4 className={styles.title}>{data.title}</h4>
+        </div>
       </Link>
     </Tooltip>
   ) : (
     <>
-      <Link to={`/album/${data.slug}`}>
-        <Card sx={{ width: 160, height: 210 }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              width="160"
-              height="170"
-              image={data.image}
-              alt={data.slug}
-            />
-            <CardContent className={styles.cardContent}>
-              <Chip
-                className={styles.chip}
-                label={`${numberTransform(data.likes)} Likes`}
-                variant="filled"
-                color="primary"
+      <Tooltip title={data.title} placement="top" followCursor>
+        <div className={styles.card}>
+          <Card sx={{ width: 160, height: 210 }}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                width="160"
+                height="170"
+                image={data.image}
+                alt={data.slug}
               />
-            </CardContent>
-          </CardActionArea>
-        </Card>
+              <CardContent className={styles.cardContent}>
+                <Chip
+                  className={styles.chip}
+                  label={`${numberTransform(data.likes)} Likes`}
+                  variant="filled"
+                  color="primary"
+                />
+              </CardContent>
+            </CardActionArea>
+          </Card>
 
-        <h4 className={styles.title}>{data.title}</h4>
-      </Link>
+          <h4 className={styles.title}>{data.title}</h4>
+        </div>
+      </Tooltip>
     </>
   );
 

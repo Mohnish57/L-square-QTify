@@ -35,11 +35,13 @@
     gap: 0.5rem;
     margin: 1rem;
   }
-  .heroText {
-    font-size: small;
+  .heroText h1 {
+    font-size: 1rem;
+    text-align: center;
     text-wrap: wrap;
   }
   .heroImage img {
     width: 100px;
+    height: 100px;
   }
 }

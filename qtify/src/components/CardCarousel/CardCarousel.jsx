@@ -3,49 +3,79 @@ import CircularProgress from "@mui/material/CircularProgress";
 import CardComponent from "../CardComponent/CardComponent";
 import styles from "./CardCarousel.module.css";
 import Carousel from "../Carousel/Carousel";
+import Filter from "../Filters/Filter";
+// import { fetchFilters } from "../../api/api";
 
-const CardCarousel = ({ title, data, type }) => {
-  //   console.log("***", data);
+const CardCarousel = ({ title, data, type, filterSource }) => {
+  console.log("******", filterSource);
+
   const [toggle, setToggle] = useState(true);
-  const [filters, setFilters] = useState({ key: "all", value: "all" });
-  //   console.log(toggle);
+  const [filters, setFilters] = useState([{ key: "all", value: "all" }]);
+  const [selectedFilterIndex, setSelectedFilterIndex] = useState(0);
 
-  //   useEffect(() => {
-  //     if()
-  //   }, []);
+  useEffect(() => {
+    // console.log("useEffect called", await filterSource);
+    if (filterSource) {
+      setFilters((prev) => [...prev, ...filterSource]);
+    }
+  }, []);
+
+  // console.log("***", filters);
+  const showFilters = filters.length > 1;
+  // console.log(showFilters);
+
+  const cardsToRender = data.filter((card) =>
+    showFilters && selectedFilterIndex !== 0
+      ? card.genre.key === filters[selectedFilterIndex].key
+      : card
+  );
   return (
     <div className={styles.CardCarousel}>
-      {data.length === 0 ? (
-        <CircularProgress />
-      ) : (
-        <>
-          <div className={styles.carousel}>
-            <div className={styles.header}>
-              <h2>{title}</h2>
+      <>
+        <div className={styles.carousel}>
+          <div className={styles.header}>
+            <h2>{title}</h2>
+            {type === "album" ? (
               <h3 className={styles.toggle} onClick={() => setToggle(!toggle)}>
                 {toggle ? "Show All" : "Collapse"}
               </h3>
-            </div>
-
-            {!toggle ? (
-              <div className={styles.cards}>
-                {data.map((album) => {
-                  return (
-                    <CardComponent key={album.id} data={album} type={type} />
-                  );
-                })}
-              </div>
-            ) : (
-              <Carousel
-                data={data}
-                renderComponent={(data) => (
-                  <CardComponent data={data} type={type} />
-                )}
-              />
-            )}
+            ) : null}
           </div>
-        </>
-      )}
+
+          {data.length === 0 ? (
+            <CircularProgress />
+          ) : (
+            <>
+              {!toggle ? (
+                <div className={styles.cards}>
+                  {cardsToRender.map((album) => {
+                    return (
+                      <CardComponent key={album.id} data={album} type={type} />
+                    );
+                  })}
+                </div>
+              ) : (
+                <>
+                  {showFilters && (
+                    <Filter
+                      filters={filters}
+                      selectedFilterIndex={selectedFilterIndex}
+                      setSelectedFilterIndex={selectedFilterIndex}
+                    />
+                  )}
+
+                  <Carousel
+                    data={cardsToRender}
+                    renderComponent={(data) => (
+                      <CardComponent data={data} type={type} />
+                    )}
+                  />
+                </>
+              )}
+            </>
+          )}
+        </div>
+      </>
     </div>
   );
 };

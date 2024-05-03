@@ -8,8 +8,30 @@
 .input::placeholder {
   color: var(--color-black);
 }
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @media (max-width: 786px) {
   .search {
     margin: 0 1rem;
   }
+}
+.searchInput {
+  width: 30vw;
+  padding: 0.6rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border: 2px solid var(--color-black);
+  color: var(--color-black);
+}
+
+.searchBtn {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: 0.25rem;
+  margin: 0;
+  background-color: var(--color-white);
 }

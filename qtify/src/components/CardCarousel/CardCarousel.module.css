@@ -12,6 +12,7 @@
   justify-content: space-evenly;
   margin-top: 1rem;
 }
+
 .toggle {
   color: var(--color-primary);
   font-weight: 600;
@@ -20,4 +21,9 @@
 .header {
   display: flex;
   justify-content: space-between;
+}
+@media (max-width: 786px) {
+  .cards {
+    grid-template-columns: repeat(2, 50%);
+  }
 }

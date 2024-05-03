@@ -1,6 +1,11 @@
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import { fetchTopAlbums, fetchSongs, fetchNewAlbums } from "./api/api";
+import {
+  fetchTopAlbums,
+  fetchSongs,
+  fetchNewAlbums,
+  fetchFilters,
+} from "./api/api";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { StyledEngineProvider } from "@mui/material";
@@ -10,19 +15,20 @@ const App = () => {
 
   const generateData = async (key, source) => {
     const response = await source();
-
     setData((prevState) => {
       return { ...prevState, [key]: response };
     });
   };
+
+  // console.log(data);
   useEffect(() => {
     generateData("topAlbums", fetchTopAlbums);
     generateData("newAlbums", fetchNewAlbums);
     generateData("songs", fetchSongs);
+    generateData("filters", fetchFilters);
   }, []);
 
-  // console.log(data);
-  const { topAlbums = [], newAlbums = [], songs = [] } = data;
+  const { topAlbums = [], newAlbums = [] } = data;
 
   return (
     <StyledEngineProvider injectFirst>
