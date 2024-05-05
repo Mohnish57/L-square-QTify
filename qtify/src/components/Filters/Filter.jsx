@@ -51,6 +51,7 @@ function Filter({ filters, selectedFilterIndex, setSelectedFilterIndex }) {
         value={selectedFilterIndex}
         onChange={handleChange}
         aria-label="simple tabs example"
+        variant="scrollable"
         TabIndicatorProps={{
           style: {
             backgroundColor: "var(--color-primary)",
