@@ -6,7 +6,7 @@ import { Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
 
 const Carousel = ({ data, renderComponent }) => {
-  console.log("cards to render", data);
+  // console.log("cards to render", data);
   return (
     <>
       <Swiper

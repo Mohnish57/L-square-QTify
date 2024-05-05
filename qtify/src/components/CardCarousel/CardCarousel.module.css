@@ -22,6 +22,8 @@
   display: flex;
   justify-content: space-between;
 }
+.filterWrapper {
+}
 @media (max-width: 786px) {
   .cards {
     grid-template-columns: repeat(2, 50%);

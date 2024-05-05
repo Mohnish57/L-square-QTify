@@ -20,21 +20,24 @@ const App = () => {
     });
   };
 
-  // console.log(data);
+  // let count = 0;
   useEffect(() => {
+    // console.log(++count);
     generateData("topAlbums", fetchTopAlbums);
     generateData("newAlbums", fetchNewAlbums);
     generateData("songs", fetchSongs);
-    generateData("filters", fetchFilters);
+    // generateData("filters", fetchFilters);
   }, []);
 
   const { topAlbums = [], newAlbums = [] } = data;
+  // console.log(data);
 
   return (
     <StyledEngineProvider injectFirst>
       <div className="App">
         <Navbar searchData={[...topAlbums, ...newAlbums]} />
         {/* outlet will refer to home page as it is on same route "/"  */}
+
         <Outlet context={{ data }} />
       </div>
     </StyledEngineProvider>

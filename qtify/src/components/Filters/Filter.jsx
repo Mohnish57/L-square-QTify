@@ -3,6 +3,8 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import styles from "./Filter.module.css";
+import PropTypes from "prop-types";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -24,8 +26,15 @@ function TabPanel(props) {
   );
 }
 
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
 function Filter({ filters, selectedFilterIndex, setSelectedFilterIndex }) {
-  console.log(filters);
+  // console.log(filters);
+
   const handleChange = (event, newValue) => {
     setSelectedFilterIndex(newValue);
   };
@@ -42,11 +51,20 @@ function Filter({ filters, selectedFilterIndex, setSelectedFilterIndex }) {
         value={selectedFilterIndex}
         onChange={handleChange}
         aria-label="simple tabs example"
+        TabIndicatorProps={{
+          style: {
+            backgroundColor: "var(--color-primary)",
+            color: "var(--color-white)",
+          },
+        }}
       >
-        {filters.map((label, key) => (
-          <>
-            <Tab key={label.key} label={label.label} {...allyProps(key)} />
-          </>
+        {filters.map((el, index) => (
+          <Tab
+            key={index}
+            className={styles.tabElement}
+            label={el.key}
+            {...allyProps(index)}
+          />
         ))}
       </Tabs>
     </div>

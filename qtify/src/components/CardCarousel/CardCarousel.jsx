@@ -7,16 +7,17 @@ import Filter from "../Filters/Filter";
 // import { fetchFilters } from "../../api/api";
 
 const CardCarousel = ({ title, data, type, filterSource }) => {
-  console.log("******", filterSource);
-
   const [toggle, setToggle] = useState(true);
   const [filters, setFilters] = useState([{ key: "all", value: "all" }]);
   const [selectedFilterIndex, setSelectedFilterIndex] = useState(0);
 
   useEffect(() => {
     // console.log("useEffect called", await filterSource);
-    if (filterSource) {
-      setFilters((prev) => [...prev, ...filterSource]);
+    if (!!filterSource) {
+      filterSource().then((response) => {
+        const { data } = response;
+        setFilters((prev) => [...prev, ...data]);
+      });
     }
   }, []);
 
@@ -57,11 +58,13 @@ const CardCarousel = ({ title, data, type, filterSource }) => {
               ) : (
                 <>
                   {showFilters && (
-                    <Filter
-                      filters={filters}
-                      selectedFilterIndex={selectedFilterIndex}
-                      setSelectedFilterIndex={selectedFilterIndex}
-                    />
+                    <div className={styles.filterWrapper}>
+                      <Filter
+                        filters={filters}
+                        selectedFilterIndex={selectedFilterIndex}
+                        setSelectedFilterIndex={setSelectedFilterIndex}
+                      />
+                    </div>
                   )}
 
                   <Carousel
